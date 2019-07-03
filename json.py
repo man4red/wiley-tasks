@@ -75,6 +75,7 @@ def main():
         for friend in row['friends']:
           if friend.get('id') == 2:
             print(friend.get('name'))
+            continue
     except KeyError:
       pass
 
