@@ -63,7 +63,6 @@ def get_jmx(host, port, jmxQuery=None):
 
 def main():
   hosts = ["qaserver1", "qaserver2", "qaserver3", "qaserver4", "qaserver5", "qaserver6"]
-  hosts = ["localhost", "qaserver1"]
   port = 5569
   for host in hosts:
     # Check socket
