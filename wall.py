@@ -28,6 +28,7 @@ def main():
       ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
       ssh.connect(host, username=username, password=password, timeout=2)
       ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command("wall $(cat /proc/cmdline)")
+      logger.info("Server %s - command was sent", host)
     except:
       logger.error("Server %s is not available or wrong user/pass", host)
       pass
