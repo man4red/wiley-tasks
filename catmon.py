@@ -34,10 +34,10 @@ def check_socket(host, port, timeout=1):
     try:
         with closing(s) as sock:
             if sock.connect_ex((host, port)) == 0:
-                logger.info('Server %s is available on port %d', host, port)
+                logger.debug('Server %s is available on port %d', host, port)
                 return True
     except:
-        logger.info('Server %s is not available on port %d', host, port)
+        logger.debug('Server %s is not available on port %d', host, port)
         return False
 
 
@@ -79,7 +79,7 @@ def main():
         if is_socket_open:
             get_jmx(host, port, [JMXQuery("*:*/startTime")])
         else:
-            logger.error('Server %s is not available on port %d', host, port)
+            logger.warn('Server %s is not available on port %d', host, port)
 
 
 if __name__ == '__main__':
