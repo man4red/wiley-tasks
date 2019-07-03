@@ -40,8 +40,7 @@ def check_socket(host, port, timeout=1):
   except:
     logger.info('Server %s is not available on port %d', host, port)
     return False
-        
-      
+
 def get_jmx(host, port, jmxQuery=None):
   """Get jmx
   :param host: host
