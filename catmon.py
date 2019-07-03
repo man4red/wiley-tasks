@@ -40,27 +40,36 @@ def check_socket(host, port, timeout=1):
         logger.info('Server %s is not available on port %d', host, port)
         return False
 
+
 def get_jmx(host, port, jmxQuery=None):
     """Get jmx
     :param host: host
     :param port: port
     :param jmxQuery: jmxQuery
     """
-    jmxConnection = JMXConnection("service:jmx:rmi:///jndi/rmi://"+str(host)+":"+str(port)+"/jmxrmi")
+    jmxConnection = JMXConnection("service:jmx:rmi:///jndi/rmi://" +
+                                  str(host) + ":" + str(port) + "/jmxrmi")
     metrics = jmxConnection.query(jmxQuery)
 
     for metric in metrics:
-        x = re.search("name=\/\/(?P<hostname>.*)\/(?!docs,|manager,)(?P<appname>[^,]+)", metric.mBeanName)
+        x = re.search(
+            "name=\/\/(?P<hostname>.*)\/(?!docs,|manager,)(?P<appname>[^,]+)",
+            metric.mBeanName)
         if x is not None:
             if x.group('appname') is not None:
-                appname=x.group('appname')
+                appname = x.group('appname')
                 now = datetime.now()
                 starttime = datetime.fromtimestamp(metric.value / 1e3)
                 delta = now - starttime
-                logger.info('Server: %s; appname: %s; uptime: %s', host, appname, str(delta))
+                logger.info('Server: %s; appname: %s; uptime: %s', host,
+                            appname, str(delta))
+
 
 def main():
-    hosts = ["qaserver1", "qaserver2", "qaserver3", "qaserver4", "qaserver5", "qaserver6"]
+    hosts = [
+        "qaserver1", "qaserver2", "qaserver3", "qaserver4", "qaserver5",
+        "qaserver6"
+    ]
     port = 5569
     for host in hosts:
         # Check socket
@@ -72,5 +81,6 @@ def main():
         else:
             logger.error('Server %s is not available on port %d', host, port)
 
+
 if __name__ == '__main__':
-        main()
+    main()
