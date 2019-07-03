@@ -45,7 +45,7 @@ def check_socket(host, port, timeout=1):
 def get_jmx(host, port, jmxQuery=None):
   """Get jmx
   :param host: host
-    :param port: port
+  :param port: port
   :param jmxQuery: jmxQuery
   """
   jmxConnection = JMXConnection("service:jmx:rmi:///jndi/rmi://"+str(host)+":"+str(port)+"/jmxrmi")
