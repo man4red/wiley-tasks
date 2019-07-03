@@ -1,5 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+__author__ = "Egor Egorenkov"
+__license__ = "GPL"
+__version__ = "1.0.0"
+__maintainer__ = "Egor Egorenkov"
+__email__ = "it.manfred@gmail.com"
+__status__ = "Development"
+
 import json
 
 jsonstr = """
