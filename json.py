@@ -69,7 +69,6 @@ result = json.loads(jsonstr)
 def main():
   """ fetch the user’s friend’s name those “id” equals “2”, and has ‘laborum’ tag
   """
-
   for row in result:
     try:
       if 'laborum' in row['tags']:
@@ -78,6 +77,6 @@ def main():
             print(friend.get('name'))
     except KeyError:
       pass
-    
+
 if __name__ == "__main__":
     main()
