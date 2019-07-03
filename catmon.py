@@ -73,8 +73,6 @@ def main():
       get_jmx(host, port, [JMXQuery("*:*/startTime")])
     else:
       logger.error('Server %s is not available on port %d', host, port)
-  
-  
 
 if __name__ == '__main__':
     main()
